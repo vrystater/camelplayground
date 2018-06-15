@@ -16,7 +16,7 @@ public class MainApp {
     public static void main(String... args) throws Exception {
         Main main = new Main();
 //        main.addRouteBuilder(new MyRouteBuilder());
-        main.addRouteBuilder(new MyRKSRouteBuilder());
+        main.addRouteBuilder(new MyRestRoute());
 //        main.addRouteBuilder(new MyOtherRouteBuilder());
 
         CamelContext camelContext = main.getOrCreateCamelContext();
