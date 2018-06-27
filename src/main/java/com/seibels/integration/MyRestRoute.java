@@ -7,9 +7,10 @@ public class MyRestRoute extends RouteBuilder {
     public void configure() throws Exception {
         from("timer:test?repeatCount=1")
                 .log("ping")
-                .setHeader("documentId", constant("1686802"))
+                .setBody(constant("1686802"))
+                .setHeader("documentId", simple("${body}"))
                 .setHeader("groupCode", constant("GPCIC"))
-                .to("restlet:http://localhost:8791/document/{groupCode}/{documentId}?restletMethod=GET&synchronous=true&streamRepresentation=true")
+                .to("restlet:http://localhost:8791/document/{groupCode}/{documentId}?autoCloseStream=true&streamRepresentation=true")
                 .convertBodyTo(byte[].class)
                 .process(exchange -> {
                     System.out.println("FIle = " + exchange.getIn().getBody(byte[].class).length);
