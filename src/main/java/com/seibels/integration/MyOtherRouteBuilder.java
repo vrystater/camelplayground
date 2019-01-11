@@ -11,6 +11,8 @@ import java.util.List;
 public class MyOtherRouteBuilder extends RouteBuilder {
     @Override
     public void configure() throws Exception {
+
+
         from("file:/home/qg/tmp?fileName=test.pdf&delay=3000&move=success&move&moveFailed=failed")
                 .log("ding")
                 .setHeader("renderName", constant("test"))
